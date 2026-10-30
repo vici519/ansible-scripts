@@ -1,6 +1,8 @@
+---
 - name: Настройка firewall на серверах
   hosts: all
-  become: yes  # Выполнять от имени root
+  gather_facts: no        # <--- ВОТ ЭТА СТРОКА ОТКЛЮЧАЕТ ПОИСК PYTHON!
+  become: yes             # Выполнять от имени root
   
   tasks:
     - name: Добавляем IP в зону 3proxy
