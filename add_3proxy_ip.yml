@@ -1,0 +1,16 @@
+---
+- name: Настройка firewall на серверах
+  hosts: all
+  become: yes  # Выполнять от имени root (sudo)
+  
+  tasks:
+    - name: Добавляем IP в зону 3proxy
+      ansible.builtin.command:
+        cmd: /usr/bin/firewall-cmd --zone=3proxy --add-source=5.45.74.76 --permanent
+      changed_when: true
+
+    - name: Перезагружаем firewall
+      ansible.builtin.command:
+        cmd: /usr/bin/firewall-cmd --reload
+      changed_when: true
+      
