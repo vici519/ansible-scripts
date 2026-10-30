@@ -1,5 +1,5 @@
 ---
-- name: Удаление софта
+- name: Добавление репозитория
   hosts: all
   gather_facts: no        # <--- ВОТ ЭТА СТРОКА ОТКЛЮЧАЕТ ПОИСК PYTHON!
   become: yes             # Выполнять от имени root
