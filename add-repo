@@ -8,19 +8,19 @@
     - name: Добавляю vault
       ansible.builtin.raw: /usr/bin/sed -i 's/mirror.centos.org/vault.centos.org/g' /etc/yum.repos.d/CentOS*.repo
       changed_when: true
-  tasks2:
+  tasks:
     - name: Добавляю baseurl
       ansible.builtin.raw: /usr/bin/sed -i 's/^#.*baseurl=http/baseurl=http/g' /etc/yum.repos.d/CentOS*.repo
       changed_when: true
-  tasks3:
+  tasks:
     - name: Добавляю mirrorlist
       ansible.builtin.raw: /usr/bin/sed -i 's/^mirrorlist=http/#mirrorlist=http/g' /etc/yum.repos.d/CentOS*.repo
       changed_when: true
-  tasks4:
+  tasks:
     - name: Чищу кэщ
       ansible.builtin.raw: /usr/bin/yum clean all
       changed_when: true
-  tasks5:
+  tasks:
     - name: обновляю yum
       ansible.builtin.raw: /usr/bin/yum update
       changed_when: true
