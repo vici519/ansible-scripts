@@ -1,0 +1,14 @@
+---
+- name: Настройка firewall на серверах
+  hosts: all
+  gather_facts: no        # <--- ВОТ ЭТА СТРОКА ОТКЛЮЧАЕТ ПОИСК PYTHON!
+  become: yes             # Выполнять от имени root
+  
+  tasks:
+    - name: Обновление yum
+      ansible.builtin.raw: /usr/bin/yum update -y
+      changed_when: true
+
+    - name: Перезагрузка
+      ansible.builtin.raw: /usr/bin/reboot
+      changed_when: true
